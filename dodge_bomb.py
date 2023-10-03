@@ -31,6 +31,7 @@ def main():
     kk_img = pg.transform.rotozoom(kk_img, 0, 2.0)
     kk_rct = kk_img.get_rect()
     kk_rct.center = (900, 400)  # 練習３：こうかとんの初期座標を設定する
+    naki_img = pg.image.load("ex02/fig/8.png")
     """ばくだん"""
     bd_img = pg.Surface((20, 20))  # 練習１：爆弾Surfaceを作成する
     bd_img.set_colorkey((0, 0, 0))  # 練習１：黒い部分を透明にする
@@ -48,6 +49,8 @@ def main():
 
 
         if kk_rct.colliderect(bd_rct):  # 練習５：ぶつかってたら
+            screen.blit(naki_img, bd_rct)
+            pg.display.update()
             print("ゲームオーバー")
             return
 
