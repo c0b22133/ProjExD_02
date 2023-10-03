@@ -54,6 +54,9 @@ def main():
             print("ゲームオーバー")
             return
 
+
+
+
         screen.blit(bg_img, [0, 0])
 
         avx, avy = vx*accs[min(tmr//500, 9)],vy*accs[min(tmr//500, 9)]
