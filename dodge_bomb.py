@@ -3,7 +3,7 @@ import sys
 import pygame as pg
 
 
-WIDTH, HEIGHT = 1600, 800
+WIDTH, HEIGHT = 1600, 900
 
 
 def main():
@@ -15,9 +15,10 @@ def main():
     bd_img = pg.Surface((20, 20)) #練習1:爆弾を作る
     bd_img.set_colorkey((0,0,0))
     pg.draw.circle(bd_img, (255, 0, 0), (10, 10), 10)
-    bd_rct = bg_img.get_rect() #練習1:surfaceから
+    bd_rct = bd_img.get_rect() #練習1:surfaceから
     x,y = random.randint(0,WIDTH),random.randint(0,HEIGHT)
     bd_rct.center = (x, y) #練習1:rectにランダムな座標を設定
+    vx, vy = +5, +5 #2
 
     clock = pg.time.Clock()
     tmr = 0
@@ -28,10 +29,11 @@ def main():
 
         screen.blit(bg_img, [0, 0])
         screen.blit(kk_img, [900, 400])
+        bd_rct.move_ip(vx, vy) #2
         screen.blit(bd_img, bd_rct)
         pg.display.update()
         tmr += 1
-        clock.tick(10)
+        clock.tick(50)
 
 
 if __name__ == "__main__":
